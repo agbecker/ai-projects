@@ -160,8 +160,8 @@ def get_clues(board : np.array):
 if __name__ == '__main__':
     
     sols = dict()
-    for n in range(4,5):
-        for i in range(2**(n**2)):
+    for n in range(10,11):
+        for i in range(2**(n**2)//10000, 0, -1):
             mat = num_to_mat(n, i)
             clues = get_clues(mat)
             
@@ -169,6 +169,7 @@ if __name__ == '__main__':
                 sols[clues] = [mat]
             else:
                 sols[clues].append(mat)
+                break
 
     # Display two matrices with the same clues
     clue = random.choice([k for k in sols if len(sols[k]) > 1])
